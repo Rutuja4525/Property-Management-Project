@@ -9,6 +9,10 @@ import About from "./pages/About";
 import Contact from "./pages/Contact";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Dashboard from "./pages/Dashboard";
+import Properties from "./pages/Properties";
+import Documents from "./pages/Documents";
+import Profile from "./pages/Profile";
 
 function App() {
   return (
@@ -17,19 +21,29 @@ function App() {
 
         <Navbar />
 
-        <Routes>
+        <div className="main-wrapper">
+          <Routes>
 
-          <Route path="/" element={<Home />} />
+            <Route path="/" element={<Home />} />
 
-          <Route path="/about" element={<About />} />
+            <Route path="/about" element={<About />} />
 
-          <Route path="/contact" element={<Contact />} />
+            <Route path="/contact" element={<Contact />} />
 
-          <Route path="/login" element={<Login />} />
+            <Route path="/login" element={<Login />} />
 
-          <Route path="/register" element={<Register />} />
+            <Route path="/register" element={<Register />} />
 
-        </Routes>
+            <Route path="/dashboard" element={<Dashboard />} />
+
+            <Route path="/properties" element={<Properties />} />
+
+            <Route path="/documents" element={<Documents />} />
+
+            <Route path="/profile" element={<Profile />} />
+
+          </Routes>
+        </div>
 
         <Footer />
 

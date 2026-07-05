@@ -177,4 +177,29 @@ public class AuthController {
             return ResponseEntity.internalServerError().body(new MessageResponse("Error verifying Google ID token: " + e.getMessage()));
         }
     }
+
+    @PostMapping("/change-password")
+    public ResponseEntity<?> changePassword(@Valid @RequestBody ChangePasswordRequest request) {
+        Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+        if (authentication == null || !authentication.isAuthenticated() || authentication.getPrincipal().equals("anonymousUser")) {
+            return ResponseEntity.status(401).body(new MessageResponse("Error: Unauthorized!"));
+        }
+
+        UserDetailsImpl userDetails = (UserDetailsImpl) authentication.getPrincipal();
+        User user = userRepository.findByEmail(userDetails.getEmail())
+                .orElseThrow(() -> new RuntimeException("Error: User not found!"));
+
+        // Check if the current password is correct (for LOCAL accounts)
+        if (user.getAuthProvider() == AuthProvider.LOCAL && user.getPassword() != null) {
+            if (!encoder.matches(request.getCurrentPassword(), user.getPassword())) {
+                return ResponseEntity.badRequest().body(new MessageResponse("Error: Current password is incorrect!"));
+            }
+        }
+
+        // Update password
+        user.setPassword(encoder.encode(request.getNewPassword()));
+        userRepository.save(user);
+
+        return ResponseEntity.ok(new MessageResponse("Password updated successfully!"));
+    }
 }

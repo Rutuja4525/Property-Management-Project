@@ -12,4 +12,8 @@ export const loginUser = (credentials) => {
 
 export const googleLoginUser = (googleData) => {
     return axios.post(`${BASE_URL}/google`, googleData);
+};
+
+export const changePassword = (passwordData) => {
+    return axios.post(`${BASE_URL}/change-password`, passwordData);
 };
