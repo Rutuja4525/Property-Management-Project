@@ -71,7 +71,7 @@ function Dashboard() {
                             Hello, {user ? `${user.firstName} ${user.lastName}` : "User"}!
                         </h2>
                         <p className="text-white-50 mb-0 small">
-                            Welcome back to your Property Management Portal. Here is your dashboard summary for today. You have 3 pending document reviews and 1 open maintenance ticket.
+                            Welcome back to your User Document Upload Portal. Here is your dashboard summary for today. You have 3 pending document reviews and 1 open maintenance ticket.
                         </p>
                     </div>
                 </div>

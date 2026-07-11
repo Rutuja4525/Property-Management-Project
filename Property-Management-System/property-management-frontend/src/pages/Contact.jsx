@@ -5,7 +5,7 @@ function Contact() {
 
       <h2>Contact Us</h2>
 
-      <p>Email : support@propertyms.com</p>
+      <p>Email : support@documentuploadportal.com</p>
 
       <p>Phone : +91 9876543210</p>
 

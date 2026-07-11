@@ -109,14 +109,26 @@ function Documents() {
         setDragActive(false);
 
         if (e.dataTransfer.files && e.dataTransfer.files[0]) {
-            triggerUpload(e.dataTransfer.files[0]);
+            const file = e.dataTransfer.files[0];
+            const name = file.name.toLowerCase();
+            if (!name.endsWith(".pdf") && !name.endsWith(".doc") && !name.endsWith(".docx")) {
+                alert("Only PDF (.pdf) and Word (.doc, .docx) documents are allowed.");
+                return;
+            }
+            triggerUpload(file);
         }
     };
 
     // Handle File Input Change
     const handleFileInput = (e) => {
         if (e.target.files && e.target.files[0]) {
-            triggerUpload(e.target.files[0]);
+            const file = e.target.files[0];
+            const name = file.name.toLowerCase();
+            if (!name.endsWith(".pdf") && !name.endsWith(".doc") && !name.endsWith(".docx")) {
+                alert("Only PDF (.pdf) and Word (.doc, .docx) documents are allowed.");
+                return;
+            }
+            triggerUpload(file);
         }
     };
 
@@ -268,13 +280,14 @@ function Documents() {
                                     id="file-upload" 
                                     className="d-none" 
                                     onChange={handleFileInput}
+                                    accept=".pdf,.doc,.docx"
                                     disabled={uploading || properties.length === 0}
                                 />
                                 <label htmlFor="file-upload" style={{ cursor: (uploading || properties.length === 0) ? "not-allowed" : "pointer" }}>
                                     <FaCloudUploadAlt size={48} className="text-primary mb-2" />
                                     <p className="fw-bold text-dark mb-1 small">Drag and drop file here</p>
                                     <span className="text-muted small d-block mb-2">or browse files from device</span>
-                                    <span className="badge bg-light text-muted border px-2.5 py-1" style={{ fontSize: "10px" }}>PDF, WORD, JPG, PNG (Max 5MB)</span>
+                                    <span className="badge bg-light text-muted border px-2.5 py-1" style={{ fontSize: "10px" }}>PDF or Word Document Only (Max 5MB)</span>
                                 </label>
                             </div>
 

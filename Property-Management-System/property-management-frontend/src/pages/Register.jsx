@@ -19,6 +19,7 @@ function Register() {
     });
 
     const [showPassword, setShowPassword] = useState(false);
+    const [showConfirmPassword, setShowConfirmPassword] = useState(false);
     const [passwordStrength, setPasswordStrength] = useState({ score: 0, label: "Empty", color: "bg-light" });
     const [error, setError] = useState("");
     const [success, setSuccess] = useState("");
@@ -166,24 +167,32 @@ function Register() {
 
     return (
         <div className="auth-split-container animate-fade-in">
-            {/* Left Column: Branding / Illustration */}
+            {/* Left Column: Branding / Illustration with real estate background */}
             <div className="auth-sidebar text-center">
                 <div style={{ position: "relative", zIndex: 2 }}>
-                    <div className="mb-4" style={{ fontSize: "70px" }}>🏠</div>
-                    <h1 className="fw-extrabold text-white mb-3" style={{ fontSize: "2.75rem", letterSpacing: "-1px" }}>
-                        Join PropertyMS
+                    <img 
+                        src="/images/logo.png" 
+                        alt="LogiPrime Logo" 
+                        className="mx-auto mb-4 bg-white p-2.5 rounded-xl shadow-md border border-slate-700/20" 
+                        style={{ height: "65px", width: "auto" }} 
+                    />
+                    <h1 className="fw-extrabold text-white mb-2" style={{ fontSize: "2.6rem", letterSpacing: "-1px" }}>
+                        User Document Upload
                     </h1>
-                    <p className="text-white-50 mx-auto" style={{ maxWidth: "460px", fontSize: "16px", lineHeight: "1.6" }}>
-                        Unlock access to secure lease workflows, document management, and custom real-estate statistics dashboard profiles.
+                    <h2 className="fs-5 text-blue-400 fw-semibold mb-3">
+                        Secure User Document Upload Portal
+                    </h2>
+                    <p className="text-white-50 mx-auto" style={{ maxWidth: "450px", fontSize: "15px", lineHeight: "1.6" }}>
+                        Upload, verify, and manage documents securely from one unified platform.
                     </p>
                 </div>
             </div>
 
             {/* Right Column: Registration Card */}
             <div className="auth-form-side">
-                <div className="auth-card" style={{ maxWidth: "580px" }}>
+                <div className="auth-card" style={{ maxWidth: "540px" }}>
                     <div className="text-center mb-4">
-                        <h2 className="fw-bold mb-1" style={{ color: "var(--text-h)" }}>Create Account</h2>
+                        <h2 className="fw-bold mb-1 text-slate-800" style={{ fontSize: "24px" }}>Create Account</h2>
                         <p className="text-muted small">Fill out the form below to register your SaaS profile</p>
                     </div>
 
@@ -232,36 +241,33 @@ function Register() {
                             </div>
                         </div>
 
-                        <div className="row">
-                            <div className="col-md-6 mb-3 text-start">
-                                <label className="form-label small fw-semibold" style={{ color: "var(--text-h)" }}>
-                                    <FaEnvelope className="me-2 text-muted" /> Email Address
-                                </label>
-                                <input
-                                    type="email"
-                                    name="email"
-                                    className="form-control auth-input"
-                                    value={formData.email}
-                                    onChange={handleChange}
-                                    placeholder="john@example.com"
-                                    required
-                                />
-                            </div>
+                        <div className="mb-3 text-start">
+                            <label className="form-label small fw-semibold" style={{ color: "var(--text-h)" }}>
+                                <FaEnvelope className="me-2 text-muted" /> Email Address
+                            </label>
+                            <input
+                                type="email"
+                                name="email"
+                                className="form-control auth-input"
+                                value={formData.email}
+                                onChange={handleChange}
+                                placeholder="your.email@example.com"
+                                required
+                            />
+                        </div>
 
-                            <div className="col-md-6 mb-3 text-start">
-                                <label className="form-label small fw-semibold" style={{ color: "var(--text-h)" }}>
-                                    <FaPhone className="me-2 text-muted" /> Phone
-                                </label>
-                                <input
-                                    type="tel"
-                                    name="phone"
-                                    className="form-control auth-input"
-                                    value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="1234567890"
-                                    required
-                                />
-                            </div>
+                        <div className="mb-3 text-start">
+                            <label className="form-label small fw-semibold" style={{ color: "var(--text-h)" }}>
+                                <FaPhone className="me-2 text-muted" /> Phone Number
+                            </label>
+                            <input
+                                type="tel"
+                                name="phone"
+                                className="form-control auth-input"
+                                value={formData.phone}
+                                onChange={handleChange}
+                                placeholder="+1 (555) 000-0000"
+                            />
                         </div>
 
                         <div className="row">
@@ -276,8 +282,7 @@ function Register() {
                                         className="form-control auth-input pe-5"
                                         value={formData.password}
                                         onChange={handleChange}
-                                        placeholder="Min 6 characters"
-                                        minLength="6"
+                                        placeholder="••••••••"
                                         required
                                     />
                                     <button
@@ -289,35 +294,31 @@ function Register() {
                                         {showPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
                                     </button>
                                 </div>
-                                {/* Password Strength indicator */}
-                                {formData.password && (
-                                    <div className="mt-2">
-                                        <div className="progress" style={{ height: "4px" }}>
-                                            <div 
-                                                className={`progress-bar ${passwordStrength.color}`} 
-                                                style={{ width: `${(passwordStrength.score / 5) * 100}%` }}
-                                            ></div>
-                                        </div>
-                                        <div className="strength-text" style={{ fontSize: "11px", color: "#64748b" }}>
-                                            Strength: <strong>{passwordStrength.label}</strong>
-                                        </div>
-                                    </div>
-                                )}
                             </div>
 
                             <div className="col-md-6 mb-3 text-start">
                                 <label className="form-label small fw-semibold" style={{ color: "var(--text-h)" }}>
                                     <FaLock className="me-2 text-muted" /> Confirm Password
                                 </label>
-                                <input
-                                    type={showPassword ? "text" : "password"}
-                                    name="confirmPassword"
-                                    className="form-control auth-input"
-                                    value={formData.confirmPassword}
-                                    onChange={handleChange}
-                                    placeholder="Re-enter password"
-                                    required
-                                />
+                                <div className="position-relative">
+                                    <input
+                                        type={showConfirmPassword ? "text" : "password"}
+                                        name="confirmPassword"
+                                        className="form-control auth-input pe-5"
+                                        value={formData.confirmPassword}
+                                        onChange={handleChange}
+                                        placeholder="••••••••"
+                                        required
+                                    />
+                                    <button
+                                        type="button"
+                                        className="btn btn-link position-absolute text-muted p-0"
+                                        style={{ right: "15px", top: "50%", transform: "translateY(-50%)", textDecoration: "none", zIndex: 5 }}
+                                        onClick={() => setShowConfirmPassword(!showConfirmPassword)}
+                                    >
+                                        {showConfirmPassword ? <FaEyeSlash size={16} /> : <FaEye size={16} />}
+                                    </button>
+                                </div>
                                 {formData.confirmPassword && formData.password !== formData.confirmPassword && (
                                     <div className="text-danger small mt-1">Passwords do not match!</div>
                                 )}

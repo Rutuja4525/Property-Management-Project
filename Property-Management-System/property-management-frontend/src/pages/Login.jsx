@@ -117,15 +117,23 @@ function Login() {
 
     return (
         <div className="auth-split-container animate-fade-in">
-            {/* Left Column: Branding / Illustration */}
+            {/* Left Column: Branding / Illustration with real estate background */}
             <div className="auth-sidebar text-center">
                 <div style={{ position: "relative", zIndex: 2 }}>
-                    <div className="mb-4" style={{ fontSize: "70px" }}>🏢</div>
-                    <h1 className="fw-extrabold text-white mb-3" style={{ fontSize: "2.75rem", letterSpacing: "-1px" }}>
-                        Manage Properties Effortlessly
+                    <img 
+                        src="/images/logo.png" 
+                        alt="LogiPrime Logo" 
+                        className="mx-auto mb-4 bg-white p-2.5 rounded-xl shadow-md border border-slate-700/20" 
+                        style={{ height: "65px", width: "auto" }} 
+                    />
+                    <h1 className="fw-extrabold text-white mb-2" style={{ fontSize: "2.6rem", letterSpacing: "-1px" }}>
+                        Welcome to DocUpload
                     </h1>
-                    <p className="text-white-50 mx-auto" style={{ maxWidth: "460px", fontSize: "16px", lineHeight: "1.6" }}>
-                        The ultimate enterprise SaaS platform for owners, managers, and tenants. Keep track of rentals, lease agreements, and documents with absolute security.
+                    <h2 className="fs-5 text-blue-400 fw-semibold mb-3">
+                        Secure User Document Upload Portal
+                    </h2>
+                    <p className="text-white-50 mx-auto" style={{ maxWidth: "450px", fontSize: "15px", lineHeight: "1.6" }}>
+                        Upload, verify, and manage documents securely from one unified platform.
                     </p>
                 </div>
             </div>
@@ -134,7 +142,7 @@ function Login() {
             <div className="auth-form-side">
                 <div className="auth-card">
                     <div className="text-center mb-4">
-                        <h2 className="fw-bold mb-1" style={{ color: "var(--text-h)" }}>Sign In</h2>
+                        <h2 className="fw-bold mb-1 text-slate-800" style={{ fontSize: "24px" }}>Sign In</h2>
                         <p className="text-muted small">Enter your account details to access your dashboard</p>
                     </div>
 
@@ -228,7 +236,7 @@ function Login() {
 
                     <div className="text-center mt-4 pt-2 border-top">
                         <p className="text-muted small mb-0">
-                            New to PropertyMS?{" "}
+                            New to DocUpload?{" "}
                             <Link to="/register" className="fw-bold text-decoration-none" style={{ color: "var(--primary)" }}>
                                 Create an account
                             </Link>

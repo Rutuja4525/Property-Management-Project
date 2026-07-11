@@ -1,14 +1,16 @@
+@import "tailwindcss";
+
 :root {
-  --primary: #2563EB;
-  --primary-hover: #1d4ed8;
+  --primary: #0066FF;
+  --primary-hover: #0052cc;
   --success: #22C55E;
   --warning: #F59E0B;
   --danger: #EF4444;
   --bg: #F8FAFC;
   --card: #FFFFFF;
   --text: #475569;
-  --text-h: #0F172A;
-  --border: #E2E8F0;
+  --text-h: #111827;
+  --border: #E5E7EB;
   
   --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
   --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
@@ -78,9 +80,18 @@ body {
   background-color: #ffffff;
 }
 
+/* Split Page Auth Container */
+.auth-split-container {
+  min-height: calc(100vh - 65px - 60px);
+  display: flex;
+  background-color: #ffffff;
+}
+
 .auth-sidebar {
   flex: 1.1;
-  background: linear-gradient(135deg, #1e3a8a 0%, #2563eb 100%);
+  background-image: linear-gradient(135deg, rgba(9, 15, 29, 0.88) 0%, rgba(17, 26, 46, 0.94) 100%), url('/real-estate-bg.png');
+  background-size: cover;
+  background-position: center;
   color: #ffffff;
   display: flex;
   flex-direction: column;
@@ -96,9 +107,10 @@ body {
   position: absolute;
   width: 200%;
   height: 200%;
-  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, rgba(255,255,255,0) 70%);
+  background: radial-gradient(circle, rgba(0, 102, 255, 0.12) 0%, rgba(0, 102, 255, 0) 70%);
   top: -50%;
   left: -50%;
+  pointer-events: none;
 }
 
 .auth-form-side {
@@ -121,46 +133,49 @@ body {
 }
 
 .auth-card {
-  background: #ffffff;
-  border-radius: var(--radius-lg);
-  border: 1px solid var(--border);
-  box-shadow: var(--shadow-md);
-  padding: 2.5rem;
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-radius: 20px;
+  border: 1px solid rgba(229, 231, 235, 0.7);
+  box-shadow: 0 20px 40px rgba(17, 24, 39, 0.05);
+  padding: 3.2rem 2.8rem;
   width: 100%;
-  max-width: 480px;
+  max-width: 500px;
 }
 
 .auth-input {
-  border: 1.5px solid var(--border);
+  border: 1.5px solid #E5E7EB;
   border-radius: 8px;
   padding: 10px 14px;
   font-size: 15px;
-  color: var(--text-h);
-  background-color: #ffffff;
-  transition: all 0.2s ease;
+  color: #111827;
+  background-color: #F8FAFC;
+  transition: all 0.25s ease;
 }
 
 .auth-input:focus {
   outline: none;
-  border-color: var(--primary);
-  box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+  border-color: #3B82F6;
+  background-color: #ffffff;
+  box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.15);
 }
 
 .btn-premium {
-  background: linear-gradient(135deg, var(--primary) 0%, #1d4ed8 100%);
+  background: #0066FF;
   color: #ffffff !important;
   border: none;
   font-weight: 600;
   border-radius: 8px;
   padding: 11px 20px;
-  transition: all 0.2s ease;
-  box-shadow: 0 4px 6px -1px rgba(37, 99, 235, 0.2);
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 6px -1px rgba(0, 102, 255, 0.2);
 }
 
 .btn-premium:hover {
+  background: #0052cc;
   transform: translateY(-1px);
-  box-shadow: 0 6px 15px rgba(37, 99, 235, 0.35);
-  filter: brightness(1.05);
+  box-shadow: 0 6px 15px rgba(0, 102, 255, 0.35);
 }
 
 .google-btn-container {
@@ -516,3 +531,121 @@ body {
   position: relative;
   overflow: hidden;
 }
+
+/* Premium Corporate Theme & Decorative Elements (Light/Faint) */
+.corporate-bg {
+  min-height: calc(100vh - 65px - 60px);
+  background-image: linear-gradient(rgba(248, 250, 252, 0.91), rgba(241, 245, 249, 0.96)), url('/real-estate-bg.png');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 3rem 1.5rem;
+  position: relative;
+}
+
+.corporate-bg::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 80% 20%, rgba(37, 99, 235, 0.08) 0%, transparent 60%);
+  pointer-events: none;
+}
+
+.corporate-glass-panel {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 18px;
+  padding: 3.5rem;
+  box-shadow: 0 20px 50px rgba(15, 23, 42, 0.06);
+  color: #1e293b;
+  max-width: 900px;
+  width: 100%;
+}
+
+.corporate-accent-card {
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+  border-radius: 12px;
+  padding: 1.5rem;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  height: 100%;
+}
+
+.corporate-accent-card:hover {
+  background: #ffffff;
+  border-color: rgba(37, 99, 235, 0.3);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 25px rgba(37, 99, 235, 0.08);
+}
+
+.corporate-title-glow {
+  color: #0f172a;
+  letter-spacing: -1px;
+}
+
+.corporate-icon-box {
+  width: 48px;
+  height: 48px;
+  background: linear-gradient(135deg, rgba(37, 99, 235, 0.1) 0%, rgba(29, 78, 216, 0.1) 100%);
+  border: 1px solid rgba(37, 99, 235, 0.25);
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+  color: #2563eb;
+  margin-bottom: 1.25rem;
+}
+
+.btn-corporate-primary {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+  color: #ffffff !important;
+  border: none;
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  box-shadow: 0 4px 15px rgba(37, 99, 235, 0.2);
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-corporate-primary:hover {
+  color: #ffffff !important;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(37, 99, 235, 0.35);
+  filter: brightness(1.05);
+}
+
+.btn-corporate-secondary {
+  background: #ffffff;
+  color: #475569 !important;
+  border: 1.5px solid rgba(203, 213, 225, 0.8);
+  font-weight: 600;
+  padding: 0.75rem 2rem;
+  border-radius: 8px;
+  transition: all 0.25s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-corporate-secondary:hover {
+  background: rgba(248, 250, 252, 0.8);
+  border-color: rgba(148, 163, 184, 0.8);
+  color: #1e293b !important;
+  transform: translateY(-2px);
+}
+
+/* Fix Tailwind CSS conflict with Bootstrap collapse in Navbar */
+.navbar-collapse.collapse {
+  visibility: visible !important;
+}
+

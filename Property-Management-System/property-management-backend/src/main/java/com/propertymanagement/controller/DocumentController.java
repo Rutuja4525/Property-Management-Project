@@ -68,6 +68,16 @@ public class DocumentController {
             Property property = propertyRepository.findById(propertyId)
                     .orElseThrow(() -> new RuntimeException("Property not found with id: " + propertyId));
 
+            // Validate file name and extension (PDF or Word only)
+            String originalFilename = file.getOriginalFilename();
+            if (originalFilename == null) {
+                return ResponseEntity.badRequest().body("Uploaded file name is invalid.");
+            }
+            String lowerName = originalFilename.toLowerCase();
+            if (!lowerName.endsWith(".pdf") && !lowerName.endsWith(".doc") && !lowerName.endsWith(".docx")) {
+                return ResponseEntity.badRequest().body("Only Word documents (.doc, .docx) and PDF files (.pdf) are allowed.");
+            }
+
             // Format size
             long sizeInBytes = file.getSize();
             String sizeStr;
@@ -78,7 +88,7 @@ public class DocumentController {
             }
 
             Document doc = Document.builder()
-                    .name(file.getOriginalFilename())
+                    .name(originalFilename)
                     .category(category)
                     .size(sizeStr)
                     .uploadDate(LocalDate.now())

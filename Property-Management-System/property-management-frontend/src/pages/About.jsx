@@ -4,9 +4,8 @@ function About() {
       <h2>About Us</h2>
 
       <p>
-        This Property Management System helps owners,
-        tenants and administrators manage properties
-        and documents securely.
+        This User Document Upload Portal helps users
+        and administrators upload and manage documents securely.
       </p>
 
     </div>
